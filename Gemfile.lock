@@ -132,7 +132,7 @@ PLATFORMS
 
 DEPENDENCIES
   allure-rspec
-  appium_lib (~> 10.6)
+  appium_lib
   capybara
   chromedriver-helper
   cpf_faker
