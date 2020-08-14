@@ -16,7 +16,7 @@ def selecionar_na_lista(opcao, lista)
       return true
     end
   }
-  raise "Não existe a opção '" + opcao + "' na lista"
+  raise "Não existe a opção '#{opcao}' na lista"
 end
 
 def verificar_se_tem_na_lista(opcao, lista)
@@ -58,7 +58,7 @@ def retorna_nome_diferente_vetor(lista, vetor)
       end
     }
     if ver
-      opcao
+      return opcao
     end
   }
 end
