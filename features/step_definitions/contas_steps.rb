@@ -3,10 +3,10 @@ Dado("que vou para pagina clicando em {string} e {string}") do |menu, sub_menu|
   selecionar_na_lista(menu, home_page.menu)
   selecionar_na_lista(sub_menu, home_page.menu)
 end
-  
+
 Dado("preencho o nome") do
   cadastro_page.input_nome.native.clear
-  cadastro_page.input_nome.send_keys Faker::Games::Pokemon.name + " "+ Faker::Games::Zelda.character 
+  cadastro_page.input_nome.send_keys Faker::Games::Pokemon.name + " " + Faker::Games::Zelda.character
 end
 
 Quando("clico em remover conta") do
