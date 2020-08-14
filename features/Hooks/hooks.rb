@@ -3,8 +3,6 @@ Before '@web' do
 end
 
 Before '@vetor_contas' do
-    home_page = HomePage.new
-    resumo_mensal_page = ResumoMensalPage.new
     $vet_contas_com_movimentacao = []
     visit("https://srbarriga.herokuapp.com/login")
     fazer_login
