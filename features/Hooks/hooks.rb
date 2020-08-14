@@ -22,8 +22,7 @@ After do |scenario|
 end
 
 AfterStep do
-  screen 'image.png'
-  embed("image.png", 'image/png')
+  report_screenshot
 end
 
 at_exit do
@@ -41,7 +40,6 @@ end
 
 After do |scenario|
   if scenario.failed?
-    screen 'image.png'
-    embed("image.png", 'image/png')
+    report_screenshot
   end
 end

@@ -1,4 +1,5 @@
 Dado("que eu esteja na tela de cadastro") do
+  report_screenshot
   login_page.link_cadastro.click
 end
 
