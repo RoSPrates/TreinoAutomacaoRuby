@@ -1,13 +1,7 @@
-home_page = HomePage.new
-cadastro_page = CadastroPage.new
-helper = Helper.new
-contas_page = ContasPage.new
-login_page = LoginPage.new
-
 Dado("que vou para pagina clicando em {string} e {string}") do |menu, sub_menu|
-  helper.fazer_login
-  helper.selecionar_na_lista(menu, home_page.menu)
-  helper.selecionar_na_lista(sub_menu, home_page.menu)
+  fazer_login
+  selecionar_na_lista(menu, home_page.menu)
+  selecionar_na_lista(sub_menu, home_page.menu)
 end
   
 Dado("preencho o nome") do
@@ -16,7 +10,7 @@ Dado("preencho o nome") do
 end
 
 Quando("clico em remover conta") do
-  contas_page.clicar_remover helper.retorna_nome_diferente_vetor(contas_page.lst_contas, $vet_contas_com_movimentacao).text
+  contas_page.clicar_remover retorna_nome_diferente_vetor(contas_page.lst_contas, $vet_contas_com_movimentacao).text
 end
 
 E("clico em editar conta") do
