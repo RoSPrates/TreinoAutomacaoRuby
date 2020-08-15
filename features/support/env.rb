@@ -9,7 +9,6 @@ require 'report_builder'
 require 'rspec'
 require 'capybara/rspec'
 
-#require_relative '../support/methods_helper/others_helper.rb'
 Dir["#{File.expand_path('', __dir__)}/methods_helper/*_helper.rb"].map { |file| require_relative file }
 
 Dir["#{File.expand_path('', __dir__)}/page_helper/*page_helper.rb"].map { |file| require_relative file }
