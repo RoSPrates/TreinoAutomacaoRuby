@@ -27,15 +27,24 @@ end
 
 at_exit do
   #$driver.driver_quit
+  current_date = Time.now
+  date = current_date.strftime('%d_%m_%Y')
+  FileUtils.mkdir_p("report/#{date}") unless File.exist?("report/#{date}")
+  name_report = "report/#{date}/report_web_#{current_date.strftime('%d-%m-%Y_%H-%M-%S')}"
+
   ReportBuilder.input_path = "cucumber.json"
+
   ReportBuilder.configure do |config|
-    config.report_path = "reports/run"
-    config.report_types = [:json, :html]
-    options = {
-        report_title: "#{DateTime.now.strftime("%H:%M(%Z) - %d/%m/%Y")}"
-    }
-    ReportBuilder.build_report options
+    config.report_path = name_report
+    config.report_types = [:html]
+    config.color = 'indigo'
+    config.additional_info = { browser: 'Chrome', By: 'Rodrigo Prates' }
   end
+
+  options = {
+      report_title: "Ruby Frame Web Report\n#{DateTime.now.strftime("%H:%M(%Z) - %d/%m/%Y")}"
+  }
+  ReportBuilder.build_report options
 end
 
 After do |scenario|

@@ -9,12 +9,13 @@ require 'report_builder'
 require 'rspec'
 require 'capybara/rspec'
 
-require_relative '../support/helper.rb'
+#require_relative '../support/methods_helper/others_helper.rb'
+Dir["#{File.expand_path('', __dir__)}/methods_helper/*_helper.rb"].map { |file| require_relative file }
 
 Dir["#{File.expand_path('', __dir__)}/page_helper/*page_helper.rb"].map { |file| require_relative file }
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome) #definição do browser
+  Capybara::Selenium::Driver.new(app, browser: :chrome) #definição do browser
 end
 
 Capybara.default_driver = :selenium

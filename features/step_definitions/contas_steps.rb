@@ -6,7 +6,7 @@ end
 
 Dado("preencho o nome") do
   cadastro_page.input_nome.native.clear
-  cadastro_page.input_nome.send_keys Faker::Games::Pokemon.name + " " + Faker::Games::Zelda.character
+  cadastro_page.input_nome.send_keys Faker::Games::Pokemon.name + " " + Faker::TvShows::SouthPark.character
 end
 
 Quando("clico em remover conta") do
