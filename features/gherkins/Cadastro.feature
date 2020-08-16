@@ -16,3 +16,8 @@ Funcionalidade: Cadastro de usuarios
     E preencha os dados para cadastro um usuario ja cadastrado
     Quando eu clicar no botao cadastrar
     Entao visualizo a mensagem de erro "Endereço de email já utilizado" na tela
+
+  Cenario: cadastrar usuario com informacoes incompletas
+    Dado que eu esteja na tela de cadastro
+    Quando eu clicar no botao cadastrar
+    Entao visualizo as mensagens de erro de informacão faltando

@@ -18,7 +18,7 @@ After do |scenario|
   unless take_screenshot(@nome, 'screenshots/test_passed')
   end
   @browser.cookies.clear rescue warn 'Sem sessão para limpar'
-  puts "O cenário terminou em: #{DateTime.now.strftime("%H:%M(%Z) - %d/%m/%Y")}"
+  puts "O cenário terminou em: #{DateTime.now.strftime('%H:%M(%Z) - %d/%m/%Y')}"
 end
 
 AfterStep do
@@ -38,11 +38,11 @@ at_exit do
     config.report_path = name_report
     config.report_types = [:html]
     config.color = 'indigo'
-    config.additional_info = { browser: 'Chrome', By: 'Rodrigo Prates' }
+    config.additional_info = { browser: 'Chrome', Framework_By: 'Rodrigo Prates' }
   end
 
   options = {
-      report_title: "Ruby Frame Web Report\n#{DateTime.now.strftime("%H:%M(%Z) - %d/%m/%Y")}"
+    report_title: "Ruby Frame Web Report\n#{DateTime.now.strftime('%H:%M(%Z) - %d/%m/%Y')}"
   }
   ReportBuilder.build_report options
 end

@@ -8,9 +8,9 @@ Dado("preenco os dados da movimentacao corretamente") do
   selecionar_na_lista(movimentacao_page.comb_box_contas[rand(movimentacao_page.comb_box_contas.size)].text, movimentacao_page.comb_box_contas)
   movimentacao_page.input_data_pagamento.send_keys Date.today.strftime("%d/%m/%Y")
   movimentacao_page.input_data_transacao.send_keys Faker::Date.between(from: Date.new(2000, 1, 1), to: Date.today).strftime("%d/%m/%Y")
-  movimentacao_page.input_descricao.send_keys Faker::DcComics.title
+  movimentacao_page.input_descricao.send_keys (Faker::DcComics.title).gsub("'","")
   movimentacao_page.input_valor.send_keys Faker::Number.decimal(l_digits: 3, r_digits: 2)
-  movimentacao_page.input_interessado.send_keys Faker::TvShows::SouthPark.quote
+  movimentacao_page.input_interessado.send_keys (Faker::TvShows::SouthPark.quote).gsub("'","")
   report_screenshot
   movimentacao_page.radio_pendente_pago[rand(movimentacao_page.radio_pendente_pago.size)].click
 end

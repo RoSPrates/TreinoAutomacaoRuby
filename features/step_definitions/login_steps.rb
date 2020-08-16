@@ -19,7 +19,7 @@ Quando("eu clicar no botao entrar") do
 end
 
 Entao("visualizo a mensagem login com sucesso") do
-  expect(home_page.txt_login_sucesso.text).to eq("Bem vindo, #{user1[:nome]}!")
+  expect(home_page.txt_alert_success.text).to eq("Bem vindo, #{user1[:nome]}!")
 end
 
 Entao("visualizo a mensagem de erro {string} na tela") do |mensagem|
