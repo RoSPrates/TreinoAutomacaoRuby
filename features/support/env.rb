@@ -9,13 +9,21 @@ require 'report_builder'
 require 'rspec'
 require 'capybara/rspec'
 
+BROWSER = ENV['BROWSER'] #definicao do browser
+
 Dir["#{File.expand_path('', __dir__)}/methods_helper/*_helper.rb"].map { |file| require_relative file }
 
 Dir["#{File.expand_path('', __dir__)}/page_helper/*page_helper.rb"].map { |file| require_relative file }
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome) #definição do browser
+  if BROWSER.eql?('chrome')
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  elsif BROWSER.eql?('firefox')
+    Capybara::Selenium::Driver.new(app, browser: :firefox)
+  end
 end
+COMECOU = DateTime.now.strftime('%d/%m/%Y - %H:%M:%S(%Z)')
+puts "Rodando no Browser #{BROWSER} os testes começaram em: #{COMECOU}"
 
 Capybara.default_driver = :selenium
 

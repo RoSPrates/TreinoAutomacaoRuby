@@ -29,20 +29,22 @@ at_exit do
   #$driver.driver_quit
   current_date = Time.now
   date = current_date.strftime('%d_%m_%Y')
-  FileUtils.mkdir_p("report/#{date}") unless File.exist?("report/#{date}")
-  name_report = "report/#{date}/report_web_#{current_date.strftime('%d-%m-%Y_%H-%M-%S')}"
+  FileUtils.mkdir_p("report/#{date}/#{BROWSER}") unless File.exist?("report/#{date}/#{BROWSER}")
+  terminou = DateTime.now.strftime('%d/%m/%Y - %H:%M:%S(%Z)')
+  name_report = "report/#{date}/#{BROWSER}/report_web_#{BROWSER}_#{current_date.strftime('%d-%m-%Y_%H-%M-%S')}"
 
-  ReportBuilder.input_path = "cucumber.json"
+  ReportBuilder.input_path = 'cucumber.json'
 
   ReportBuilder.configure do |config|
     config.report_path = name_report
     config.report_types = [:html]
     config.color = 'indigo'
-    config.additional_info = { browser: 'Chrome', Framework_By: 'Rodrigo Prates' }
+    config.additional_info = {Browser: BROWSER.to_s, Framework_By: 'Rodrigo Prates',
+                              Comecou_em: COMECOU.to_s, Terminou_em: terminou.to_s}
   end
 
   options = {
-    report_title: "Ruby Frame Web Report\n#{DateTime.now.strftime('%H:%M(%Z) - %d/%m/%Y')}"
+      report_title: "Ruby Frame Web Report\n#{DateTime.now.strftime('%H:%M(%Z) - %d/%m/%Y')}"
   }
   ReportBuilder.build_report options
 end

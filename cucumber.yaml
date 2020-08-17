@@ -1,7 +1,10 @@
-
 ---
-default: -p html -p bdd -p json
+default: -p chrome
 html: --format html --out=features.html
 dot: --format progress
 bdd: --format pretty
 json: --format json --out cucumber.json
+
+# Browsers suportados
+chrome: -p html -p bdd -p json BROWSER=chrome
+firefox: -p html -p bdd -p json BROWSER=firefox
