@@ -39,7 +39,7 @@ Funcionalidade: Contas
     Quando eu clicar no botao entrar
     Entao visualizo a mensagem de erro "Já existe uma conta com esse nome!" na tela
 
-  @negativo @adicionar @vetor_contas @test
+  @negativo @adicionar @vetor_contas
   Cenario: Adicionar uma conta com um nome existente
     Dado que vou para pagina clicando em "Contas" e "Adicionar"
     E preencho o compo com uma conta existente

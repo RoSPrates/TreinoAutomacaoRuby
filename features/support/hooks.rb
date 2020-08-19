@@ -14,26 +14,24 @@ end
 
 After do |scenario|
   @nome = scenario.name.gsub(/([_@#!%()\-=;><,{}\~\[\]\.\/\?\"\*\^\$\+\-]+)/, '')
-  take_screenshot(@nome, 'screenshots/test_failed') if scenario.failed?
-  unless take_screenshot(@nome, 'screenshots/test_passed')
+  take_screenshot(@nome, 'report/screenshots/test_failed') if scenario.failed?
+  unless take_screenshot(@nome, 'report/screenshots/test_passed')
   end
   @browser.cookies.clear rescue warn 'Sem sessão para limpar'
-  puts "O cenário terminou em: #{DateTime.now.strftime('%H:%M(%Z) - %d/%m/%Y')}"
 end
 
 AfterStep do
-  report_screenshot
+  take_screenshot 'imagem'
 end
 
 at_exit do
   #$driver.driver_quit
   current_date = Time.now
   date = current_date.strftime('%d_%m_%Y')
-  FileUtils.mkdir_p("report/#{date}/#{BROWSER}") unless File.exist?("report/#{date}/#{BROWSER}")
+  FileUtils.mkdir_p("report/report/#{date}/#{BROWSER}") unless File.exist?("report/report/#{date}/#{BROWSER}")
   terminou = DateTime.now.strftime('%d/%m/%Y - %H:%M:%S(%Z)')
-  name_report = "report/#{date}/#{BROWSER}/report_web_#{BROWSER}_#{current_date.strftime('%d-%m-%Y_%H-%M-%S')}"
-
-  ReportBuilder.input_path = 'cucumber.json'
+  name_report = "report/report/#{date}/#{BROWSER}/report_web_#{BROWSER}_#{current_date.strftime('%d-%m-%Y_%H-%M-%S')}"
+  ReportBuilder.input_path = 'report/others/cucumber.json'
 
   ReportBuilder.configure do |config|
     config.report_path = name_report
@@ -47,10 +45,4 @@ at_exit do
       report_title: "Ruby Frame Web Report\n#{DateTime.now.strftime('%H:%M(%Z) - %d/%m/%Y')}"
   }
   ReportBuilder.build_report options
-end
-
-After do |scenario|
-  if scenario.failed?
-    report_screenshot
-  end
 end

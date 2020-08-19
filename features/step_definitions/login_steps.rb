@@ -1,16 +1,16 @@
 Dado("que eu digite um usuario e senha valida") do
-  report_screenshot
+  take_screenshot('imagem')
   login_page.input_email.send_keys user1[:email]
   login_page.input_senha.send_keys user1[:senha]
 end
 
 Dado("que eu nao preencha o campo email") do
-  report_screenshot
+  take_screenshot('imagem')
   login_page.input_senha.send_keys user1[:senha]
 end
 
 Dado("que eu nao preencha o campo senha") do
-  report_screenshot
+  take_screenshot('imagem')
   login_page.input_email.send_keys user1[:email]
 end
 

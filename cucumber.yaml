@@ -1,9 +1,9 @@
 ---
 default: -p chrome
-html: --format html --out=features.html
+html: --format html --out report/others/features.html
 dot: --format progress
 bdd: --format pretty
-json: --format json --out cucumber.json
+json: --format json --out report/others/cucumber.json
 
 # Browsers suportados
 chrome: -p html -p bdd -p json BROWSER=chrome

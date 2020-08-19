@@ -11,6 +11,8 @@ require 'capybara/rspec'
 
 BROWSER = ENV['BROWSER'] #definicao do browser
 
+FileUtils.mkdir_p('report/others') unless File.exist?('report/others')
+
 Dir["#{File.expand_path('', __dir__)}/methods_helper/*_helper.rb"].map { |file| require_relative file }
 
 Dir["#{File.expand_path('', __dir__)}/page_helper/*page_helper.rb"].map { |file| require_relative file }
@@ -28,6 +30,6 @@ puts "Rodando no Browser #{BROWSER} os testes começaram em: #{COMECOU}"
 Capybara.default_driver = :selenium
 
 Capybara.default_max_wait_time = 60 #tempo limite de execução
-Capybara.app_host = "https://srbarriga.herokuapp.com/login" #endereço da página a ser testada
+Capybara.app_host = 'https://srbarriga.herokuapp.com/login' #endereço da página a ser testada
 
 World(PageObjects)

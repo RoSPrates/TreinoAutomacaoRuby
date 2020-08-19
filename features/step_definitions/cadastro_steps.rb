@@ -1,5 +1,5 @@
 Dado("que eu esteja na tela de cadastro") do
-  report_screenshot
+  take_screenshot('imagem')
   login_page.link_cadastro.click
 end
 
