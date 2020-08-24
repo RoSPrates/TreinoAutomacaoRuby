@@ -1,7 +1,6 @@
 Dado("que vou para pagina clicando em {string} e {string}") do |menu, sub_menu|
-  fazer_login
-  selecionar_na_lista(menu, home_page.menu)
-  selecionar_na_lista(sub_menu, home_page.menu)
+  login_page.fazer_login
+  home_page.escolher_submenu(menu, sub_menu)
 end
 
 Dado("preencho o nome") do

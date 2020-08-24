@@ -8,6 +8,7 @@ require 'cpf_faker'
 require 'report_builder'
 require 'rspec'
 require 'capybara/rspec'
+require 'pry'
 
 BROWSER = ENV['BROWSER'] #definicao do browser
 
@@ -22,6 +23,8 @@ Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   elsif BROWSER.eql?('firefox')
     Capybara::Selenium::Driver.new(app, browser: :firefox)
+  elsif BROWSER.eql?('safari')
+    Capybara::Selenium::Driver.new(app, browser: :safari)
   end
 end
 COMECOU = DateTime.now.strftime('%d/%m/%Y - %H:%M:%S(%Z)')

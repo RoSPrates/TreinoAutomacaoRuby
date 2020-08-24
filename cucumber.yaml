@@ -8,3 +8,4 @@ json: --format json --out report/others/cucumber.json
 # Browsers suportados
 chrome: -p html -p bdd -p json BROWSER=chrome
 firefox: -p html -p bdd -p json BROWSER=firefox
+safari: -p html -p bdd -p json BROWSER=safari

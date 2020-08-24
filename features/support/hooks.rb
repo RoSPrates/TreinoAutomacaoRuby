@@ -5,11 +5,11 @@ end
 Before '@vetor_contas' do
   $vet_contas_com_movimentacao = []
   visit("https://srbarriga.herokuapp.com/login")
-  fazer_login
+  login_page.fazer_login
   $vet_contas_com_movimentacao = vetor_de_texto_lista(home_page.list_contas, $vet_contas_com_movimentacao)
-  selecionar_na_lista('Resumo Mensal', home_page.menu)
+  home_page.escolher_menu('Resumo Mensal')
   $vet_contas_com_movimentacao = vetor_de_texto_lista(resumo_mensal_page.list_contas_com_movimentacao, $vet_contas_com_movimentacao)
-  selecionar_na_lista('Sair', home_page.menu)
+  home_page.escolher_menu('Sair')
 end
 
 After do |scenario|
@@ -18,6 +18,7 @@ After do |scenario|
   unless take_screenshot(@nome, 'report/screenshots/test_passed')
   end
   @browser.cookies.clear rescue warn 'Sem sessão para limpar'
+  puts "O cenário terminou em: #{DateTime.now.strftime('%H:%M:%S(%Z) - %d/%m/%Y')}"
 end
 
 AfterStep do

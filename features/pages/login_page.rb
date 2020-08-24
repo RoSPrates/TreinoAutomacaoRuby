@@ -7,5 +7,10 @@ module Login
     element :txt_erro, :xpath, "//div[@class = 'alert alert-danger']"
     element :link_cadastro, :xpath, "//a[@href = '/cadastro']"
 
+    def fazer_login
+      input_email.send_keys user1[:email]
+      input_senha.send_keys user1[:senha]
+      btn_entrar.click
+    end
   end
 end

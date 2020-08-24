@@ -10,7 +10,7 @@ Funcionalidade: Movimentação
     Quando eu clicar no botao entrar
     Entao visualizo a mensagem de sucesso "Movimentação adicionada com sucesso!" na tela
 
-  @positivo @remover
+  @positivo @remover @test
   Cenario: Remover movimentação
     Dado que vou para pagina clicando em "Resumo Mensal"
     E vejo as movimentacoes que tem
